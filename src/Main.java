@@ -173,7 +173,7 @@ class Computer extends ElectronicDevice {
 
     @Override
     public int getPowerConsumption() {
-        return 300; // Пример потребления мощности в ваттах
+        return 300; 
     }
 }
 
@@ -235,13 +235,6 @@ class Software implements Product {
     }
 }
 
-
-
-
-
-
-
-
 //Задача5/////////////////////////////////////////////////////////
 
 interface Athlete {
@@ -250,7 +243,7 @@ interface Athlete {
 }
 
 abstract class Runner implements Athlete {
-    protected double bestTime; // лучшее время бегуна в секундах
+    protected double bestTime; 
 
     public Runner(double bestTime) {
         this.bestTime = bestTime;
@@ -266,23 +259,20 @@ class Sprinter extends Runner {
 
     @Override
     public void train() {
-        System.out.println("Sprinter is training for short distances.");
-        // Логика тренировки спринтера
+        System.out.println("Спринтер тренируется");
     }
 
     @Override
     public void compete() {
-        System.out.println("Sprinter is competing in a sprint race.");
-        // Логика соревнования спринтера
+        System.out.println("Спринтер соревнуется");
     }
 
     @Override
     public double getBestTime() {
-        return bestTime; // возвращаем лучшее время спринтера
+        return bestTime; 
     }
 }
 
-// Класс MarathonRunner
 class MarathonRunner extends Runner {
 
     public MarathonRunner(double bestTime) {
@@ -291,22 +281,20 @@ class MarathonRunner extends Runner {
 
     @Override
     public void train() {
-        System.out.println("Marathon runner is training for long distances.");
-        // Логика тренировки марафонца
+        System.out.println("Марафонец тренируется");
     }
 
     @Override
     public void compete() {
-        System.out.println("Marathon runner is competing in a marathon.");
-        // Логика соревнования марафонца
+        System.out.println("Марафонец соревнуется");
+     
     }
 
     @Override
     public double getBestTime() {
-        return bestTime; // возвращаем лучшее время марафонца
+        return bestTime; 
     }
 }
-
 
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
@@ -314,17 +302,18 @@ public class Main {
     public static void main(String[] args) {
         while (true) {
             System.out.println("Выберите режим работы:");
-            System.out.println("Задача с животными:");
-            System.out.println("Задача с фигурами:");
+            System.out.println("1: Задача с животными");
+            System.out.println("2: Задача с фигурами:");
+            System.out.println("3: Задача с устройствами:");
+            System.out.println("4: Задача с магазином:");
+            System.out.println("5: Задача со спортсменами:");
             if (scanner.hasNextInt()) {
                 int choice = scanner.nextInt();
                 scanner.nextLine();
-
-                switch (choice) {
-                    case 1:
+                switch (choice) {                   
 
 //Задача1/////////////////////////////////////////////////////////
-
+                 case 1:
                         Animal lion = new Lion();
                         Animal elephant = new Elephant();
                         lion.eat();
@@ -334,21 +323,21 @@ public class Main {
                         elephant.sleep();
                         ((Mammal)elephant).walk();
 
-                    case 2:
+                  
 //Задача2/////////////////////////////////////////////////////////
-
+                  case 2:
+                        
                         Shape triangle = new Triangle(3, 4, 5);
                         Shape rectangle = new Rectangle(5, 10);
-                        Shape circle = new Circle(7);
-
+                        Shape circle = new Circle(5);
+                        
                         System.out.println("Triangle: Площадь = " + triangle.area() + ", Периметр = " + triangle.perimeter() + ", Стороны = " + ((Polygon) triangle).numberOfSides());
                         System.out.println("Rectangle: Площадь = " + rectangle.area() + ", Периметр = " + rectangle.perimeter() + ", Стороны = " + ((Polygon) rectangle).numberOfSides());
                         System.out.println("Circle: Площадь = " + circle.area() + ", Perimeter = " + circle.perimeter());
-
-                    case 3:
+                   
 
 //Задача3/////////////////////////////////////////////////////////
-
+                 case 3:
                         ElectronicDevice tv = new TV();
                         ElectronicDevice computer = new Computer();
 
@@ -358,34 +347,34 @@ public class Main {
 
                         computer.turnOn();
                         System.out.println("Потребляемая мощность компьютера: " + computer.getPowerConsumption() + "W");
-                        computer.turnOff();
-
-                    case 4:
+                        computer.turnOff();                   
 
 //Задача4/////////////////////////////////////////////////////////
-
-                        Product book = new Book("Effective Java", 29.99, 0.5);
-                        Product software = new Software("IntelliJ IDEA", 149.99);
+                     case 4:
+                        
+                        Product book = new Book("Борис Годунов", 400, 0.35);
+                        Product software = new Software("Благословение небожителей", 220);
 
                         System.out.println("Product: " + book.getName());
                         System.out.println("Price: $" + book.getPrice());
-                        System.out.println("Weight: " + ((Book) book).getWeight() + " kg");
+                        System.out.println("Weight: " + ((Book) book).getWeight() + " кг");
 
                         System.out.println("\nProduct: " + software.getName());
-                        System.out.println("Price: $" + software.getPrice());
-                    case 5:
+                        System.out.println("Price: $" + software.getPrice());                    
 
 //Задача5/////////////////////////////////////////////////////////
-                        Runner sprinter = new Sprinter(9.58);
-                        Runner marathonRunner = new MarathonRunner(120.0);
+                    case 5:
+                        
+                        Runner sprinter = new Sprinter(13);
+                        Runner marathonRunner = new MarathonRunner(60.0);
 
                         sprinter.train();
                         sprinter.compete();
-                        System.out.println("Best time for sprinter: " + sprinter.getBestTime() + " seconds");
+                        System.out.println("Лучшее время спринтера: " + sprinter.getBestTime() + " секунд");
 
                         marathonRunner.train();
                         marathonRunner.compete();
-                        System.out.println("Best time for marathon runner: " + marathonRunner.getBestTime() + " minutes");
+                        System.out.println("Лучшее время марафонца: " + marathonRunner.getBestTime() + " минут");
 
                     case 0:
                         System.out.println("Выход из программы.");
